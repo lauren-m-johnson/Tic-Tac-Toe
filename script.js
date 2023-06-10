@@ -1,8 +1,15 @@
 /*----- constants -----*/
+
 const MARK = {
     '1' : 'X',
     '2': 'O',
     '0': null
+}
+
+const COLOR = {
+    '1' : 'red',
+    '2' : 'blue',
+    '0' : null
 }
 
 /*----- state variables -----*/
@@ -41,10 +48,10 @@ function renderBoard() {
        colArr.forEach(function(cellVal, rowIdx) {
         const cellId = `c${colIdx}r${rowIdx}`;
         const cellEl = document.getElementById(cellId);
-        cellEl.innerHTML = MARK[cellVal]
         //styles for MARK
+        cellEl.innerHTML = MARK[cellVal]
+        cellEl.style.color = COLOR[cellVal]
         cellEl.style.fontSize = '19vmin';
-        cellEl.style.color = 'orchid';
         cellEl.style.display = 'flex';
         cellEl.style.justifyContent = 'center';
         cellEl.style.alignItems = 'center'; 
@@ -53,7 +60,13 @@ function renderBoard() {
 }
 
 function renderMessage() {
-    
+    if (winner === 'T') {
+        msgEl.innerText = 'Tie Game!'
+    } else if (winner) {
+        msgEl.innerHTML = `<span style="color: ${COLOR[winner]}">${MARK[winner]}</span> Wins!`;
+    } else {
+        msgEl.innerHTML = `<span style="color: ${COLOR[turn]}">${MARK[turn]}</span>'s Turn`;
+    }
 }
 
 function renderControls() {
