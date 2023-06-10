@@ -1,95 +1,42 @@
 /*----- constants -----*/
 
-const MARK = {
-    '1' : 'X',
-    '2': 'O',
-    '0': null
-}
-
-const COLOR = {
-    '1' : 'red',
-    '2' : 'blue',
-    '0' : null
-}
 
 /*----- state variables -----*/
-let board; 
-//array of 3 column arrays
-let turn; // x or o
-let winner; //null, o or x winner, 'T' = tie
+let board; //array of 9 boxes
+let turn; // 1 or -1
+let winner; //null = no winner; 1 or -1 winner; 'T'
 
 /*----- cached elements  -----*/
-const msgEl = document.querySelector('h1');
-const playAgainBtn = document.querySelector('button');
-const squares = document.getElementsByClassName('square');
+
 
 /*----- event listeners -----*/
-for (let i = 0; i < squares.length; i++) {
-    squares[i].addEventListener('click', handleDrop);
-}
+
 
 /*----- functions -----*/
 init();
-
+//Initializes state and calls render()
 function init() {
-    board = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ]; 
+    board = [null, null, null, null, null, null, null, null, null];
     turn = 1;
     winner = null;
     render();
 }
 
-function handleDrop(evt) {
-    let clickedElm = evt.target;
-    let clickedIdx;
-
-    for (let i = 0; i < squares.length; i++) {
-        if (squares[i] === clickedElm) {
-            clickedIdx = i;
-            break;
-        }
-    };
-    
-    console.log(clickedIdx);
-    render();
-}
-
+//Visualizes all state in the DOM
 function render() {
     renderBoard();
     renderMessage();
-    renderControls();
 }
 
 function renderBoard() {
-    board.forEach(function(colArr, colIdx) {
-       colArr.forEach(function(cellVal, rowIdx) {
-        const cellId = `c${colIdx}r${rowIdx}`;
-        const cellEl = document.getElementById(cellId);
-        //styles for MARK
-        cellEl.innerHTML = MARK[cellVal]
-        cellEl.style.color = COLOR[cellVal]
-        cellEl.style.fontSize = '19vmin';
-        cellEl.style.display = 'flex';
-        cellEl.style.justifyContent = 'center';
-        cellEl.style.alignItems = 'center'; 
-       }) 
+    //Iterate over the squares in the board
+    board.forEach(function(boardArr, boardIdx) {
+        
+        
+        console.log(boardIdx, boardArr);
     });
 }
 
 function renderMessage() {
-    if (winner === 'T') {
-        msgEl.innerText = 'Tie Game!'
-    } else if (winner) {
-        msgEl.innerHTML = `<span style="color: ${COLOR[winner]}">${MARK[winner]}</span> Wins!`;
-    } else {
-        msgEl.innerHTML = `<span style="color: ${COLOR[turn]}">${MARK[turn]}</span>'s Turn`;
-    }
-}
 
-function renderControls() {
-    playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
 }
-
