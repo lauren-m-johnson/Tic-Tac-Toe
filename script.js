@@ -21,10 +21,12 @@ let winner; //null, o or x winner, 'T' = tie
 /*----- cached elements  -----*/
 const msgEl = document.querySelector('h1');
 const playAgainBtn = document.querySelector('button');
-
+const squares = document.getElementsByClassName('square');
 
 /*----- event listeners -----*/
-document.getElementById('board').addEventListener('click', handleDrop);
+for (let i = 0; i < squares.length; i++) {
+    squares[i].addEventListener('click', handleDrop);
+}
 
 /*----- functions -----*/
 init();
@@ -41,10 +43,17 @@ function init() {
 }
 
 function handleDrop(evt) {
-    const colIdx = board.indexOf(evt.target);
-    console.log(colIdx);
-    //evt.target getElementById
+    let clickedElm = evt.target;
+    let clickedIdx;
 
+    for (let i = 0; i < squares.length; i++) {
+        if (squares[i] === clickedElm) {
+            clickedIdx = i;
+            break;
+        }
+    };
+    
+    console.log(clickedIdx);
     render();
 }
 
