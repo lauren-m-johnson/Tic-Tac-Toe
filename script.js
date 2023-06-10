@@ -1,5 +1,15 @@
 /*----- constants -----*/
+const COLORS = {
+    '0': 'white',
+    '1': 'pink',
+    '-1': 'lightgreen'
+};
 
+const MARK = {
+    '0': '',
+    '1': 'X',
+    '-1': 'O'
+}
 
 /*----- state variables -----*/
 let board; //array of 9 boxes
@@ -16,7 +26,7 @@ let winner; //null = no winner; 1 or -1 winner; 'T'
 init();
 //Initializes state and calls render()
 function init() {
-    board = [null, null, null, null, null, null, null, null, null];
+    board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     turn = 1;
     winner = null;
     render();
@@ -31,9 +41,14 @@ function render() {
 function renderBoard() {
     //Iterate over the squares in the board
     board.forEach(function(boardArr, boardIdx) {
-        
-        
-        console.log(boardIdx, boardArr);
+        const squareId = `box-${boardIdx}`;
+        const squareEl = document.getElementById(squareId);
+        squareEl.style.backgroundColor = COLORS[boardArr];
+        squareEl.innerHTML = MARK[boardArr];
+        squareEl.style.display = 'flex';
+        squareEl.style.justifyContent = 'center';
+        squareEl.style.alignItems = 'center';
+        squareEl.style.fontSize = '19vmin';
     });
 }
 
