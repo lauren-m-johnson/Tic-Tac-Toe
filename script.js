@@ -13,15 +13,18 @@ const COLOR = {
 }
 
 /*----- state variables -----*/
-let board; //array of 3 column arrays
+let board; 
+//array of 3 column arrays
 let turn; // x or o
 let winner; //null, o or x winner, 'T' = tie
 
 /*----- cached elements  -----*/
 const msgEl = document.querySelector('h1');
+const playAgainBtn = document.querySelector('button');
+
 
 /*----- event listeners -----*/
-
+document.getElementById('board').addEventListener('click', handleDrop);
 
 /*----- functions -----*/
 init();
@@ -31,9 +34,17 @@ function init() {
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
-    ];
+    ]; 
     turn = 1;
     winner = null;
+    render();
+}
+
+function handleDrop(evt) {
+    const colIdx = board.indexOf(evt.target);
+    console.log(colIdx);
+    //evt.target getElementById
+
     render();
 }
 
@@ -70,5 +81,6 @@ function renderMessage() {
 }
 
 function renderControls() {
-
+    playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
 }
+
