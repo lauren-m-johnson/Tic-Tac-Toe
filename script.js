@@ -17,7 +17,7 @@ let turn; // 1 or -1
 let winner; //null = no winner; 1 or -1 winner; 'T'
 
 /*----- cached elements  -----*/
-
+const message = document.querySelector('h1');
 
 /*----- event listeners -----*/
 
@@ -43,6 +43,7 @@ function renderBoard() {
     board.forEach(function(boardArr, boardIdx) {
         const squareId = `box-${boardIdx}`;
         const squareEl = document.getElementById(squareId);
+        //styles for player selection
         squareEl.style.backgroundColor = COLORS[boardArr];
         squareEl.innerHTML = MARK[boardArr];
         squareEl.style.display = 'flex';
@@ -53,5 +54,11 @@ function renderBoard() {
 }
 
 function renderMessage() {
-
+    if (winner === 'T') {
+        message.innerHTML = 'Tie Game!';
+    } else if (winner) {
+        message.innerHTML = `Player ${MARK[winner]} Wins!`;
+    } else {
+        message.innerHTML = `Player ${MARK[turn]}'s Turn`;
+    }
 }
