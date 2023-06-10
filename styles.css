@@ -2,3 +2,48 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    margin-top: 5vmin;
+    font-size: 10vmin;
+    color: darkslategrey;
+}
+
+h1 {
+    color: slategrey;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 20vmin);
+    grid-template-rows: repeat(3, 20vmin);
+}
+
+#board > div {
+    border: 0.5vmin solid slategrey;
+}
+
+button {
+    margin-top: 5vmin;
+    margin-bottom: 5vmin;
+    padding: 2vmin;
+    font-size: 3vmin;
+    border-radius: 4vmin;
+    border: 0.5vmin solid lightslategrey;
+    background-color: aliceblue;
+    color: darkslategrey;
+}
+
+button:hover {
+    color: azure;
+    background-color: cadetblue;
+}
