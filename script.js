@@ -65,7 +65,8 @@ function renderBoard() {
         squareEl.style.display = 'flex';
         squareEl.style.justifyContent = 'center';
         squareEl.style.alignItems = 'center';
-        squareEl.style.fontSize = '19vmin';
+        squareEl.style.fontSize = '18vmin';
+        squareEl.style.color = 'darkslategrey';
     });
 }
 

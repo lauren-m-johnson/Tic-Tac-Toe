@@ -5,11 +5,12 @@
 body {
     height: 100vh;
     margin: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Bagel Fat One', cursive;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(236, 245, 252, 0.997);
 }
 
 header {
@@ -20,6 +21,7 @@ header {
 
 h1 {
     color: slategrey;
+    font-family: 'Mulish', sans-serif;
 }
 
 #board {
@@ -29,9 +31,12 @@ h1 {
 }
 
 #board > div {
-    border: 0.5vmin solid slategrey;
+    border: 0.5vmin solid rgba(95, 158, 160, 0.407);
 }
 
+#board > div:hover {
+    border: 0.5vmin solid cadetblue;
+}
 button {
     margin-top: 5vmin;
     margin-bottom: 5vmin;
@@ -39,7 +44,7 @@ button {
     font-size: 3vmin;
     border-radius: 4vmin;
     border: 0.5vmin solid lightslategrey;
-    background-color: aliceblue;
+    background-color: rgb(189, 220, 220);
     color: darkslategrey;
 }
 
