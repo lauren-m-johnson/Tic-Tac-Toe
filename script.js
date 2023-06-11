@@ -106,6 +106,7 @@ function getWinner() {
         }
     }
     //return 'T'; 
-    //When I impliment this, the game ends after just one move. I don't understand why it is bi-passing the loop. 
+    //I attempted to implement some tie logic if there is no winner but got totally stuck.
+    //When I impliment returning the 'T' the game ends after just one move. I don't understand why it is bi-passing the loop. 
     //When I put the statement inside the loop, it also doesn't work.
 }
