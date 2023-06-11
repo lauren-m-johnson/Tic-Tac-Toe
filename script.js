@@ -75,7 +75,7 @@ function renderMessage() {
     if (winner === 'T') {
         message.innerHTML = 'Tie Game! Game Over!';
     } else if (winner) {
-        message.innerHTML = `Player <span style="color: ${COLORS[turn]}">${MARK[turn]}</span> Wins!`;
+        message.innerHTML = `Player <span style="color: ${COLORS[winner]}">${MARK[winner]}</span> Wins!`;
     } else {
         message.innerHTML = `Player <span style="color: ${COLORS[turn]}">${MARK[turn]}</span>'s Turn`;
     }
