@@ -18,9 +18,11 @@ let winner; //null = no winner; 1 or -1 winner; 'T'
 
 /*----- cached elements  -----*/
 const message = document.querySelector('h1');
+const resetButton = document.querySelector('button');
 
 /*----- event listeners -----*/
-
+document.getElementById('board').addEventListener('click', handleClick);
+resetButton.addEventListener('click', init);
 
 /*----- functions -----*/
 init();
@@ -38,8 +40,8 @@ function render() {
     renderMessage();
 }
 
+//Iterate over the squares in the board
 function renderBoard() {
-    //Iterate over the squares in the board
     board.forEach(function(boardArr, boardIdx) {
         const squareId = `box-${boardIdx}`;
         const squareEl = document.getElementById(squareId);
@@ -53,6 +55,7 @@ function renderBoard() {
     });
 }
 
+//Displays whose turn it is and the winner
 function renderMessage() {
     if (winner === 'T') {
         message.innerHTML = 'Tie Game!';
@@ -61,4 +64,23 @@ function renderMessage() {
     } else {
         message.innerHTML = `Player ${MARK[turn]}'s Turn`;
     }
+}
+
+function handleClick(event) {
+    //gets index of the clicked box
+    const boxIdx = parseInt(event.target.id.replace('box-', ''));
+    //if statement in case someone clicks outside box, the box is filled or there is a winner
+    if ( isNaN(boxIdx) || board[boxIdx] || winner )
+        return;
+    //update state of board with the current turn value
+    board[boxIdx] = turn;
+    //switch player turn
+    turn *= -1;
+    // check for a winner
+    winner = displayWinner();
+    render();
+}   
+
+function displayWinner() {
+
 }
